@@ -279,7 +279,7 @@
             line-height: 1.7;
         }
 
-        /* ----- Projects Grid (2 Projects Only) ----- */
+        /* ----- Projects Grid (2 Projects) ----- */
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -356,7 +356,7 @@
 
         .project-card .project-links {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -364,33 +364,47 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: var(--accent);
+            padding: 7px 16px;
+            border-radius: 60px;
             text-decoration: none;
             transition: var(--transition);
         }
-        .project-card .project-links a:hover {
-            color: var(--accent-dark);
-            transform: translateX(3px);
-        }
-        .project-card .project-links a i {
-            font-size: 0.9rem;
-        }
 
-        .project-card .project-links .demo-link {
-            background: var(--accent-gradient);
-            color: #fff;
-            padding: 6px 18px;
-            border-radius: 60px;
+        .project-card .project-links .btn-github {
+            background: var(--bg-body);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
         }
-        .project-card .project-links .demo-link:hover {
-            background: var(--accent-dark);
-            color: #fff;
+        .project-card .project-links .btn-github:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--accent);
             transform: translateY(-2px);
         }
 
-        /* ----- Coming Soon / More Projects ----- */
+        .project-card .project-links .btn-video {
+            background: #FF0000;
+            color: #fff;
+        }
+        .project-card .project-links .btn-video:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .project-card .project-links .btn-demo {
+            background: var(--accent-gradient);
+            color: #fff;
+        }
+        .project-card .project-links .btn-demo:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           MORE PROJECTS (Coming Soon)
+           ============================================================ */
         .more-projects {
             text-align: center;
             padding: 30px 0;
@@ -406,65 +420,6 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             margin: 4px 0 14px;
-        }
-
-        /* ============================================================
-           UPLOAD AREA (Simple)
-           ============================================================ */
-        .upload-area {
-            margin-top: 40px;
-            padding: 40px 20px;
-            border: 2px dashed var(--border-medium);
-            border-radius: var(--radius-md);
-            text-align: center;
-            transition: var(--transition);
-            background: var(--bg-surface);
-        }
-        .upload-area:hover {
-            border-color: var(--accent);
-            background: var(--accent-soft);
-        }
-        .upload-area i {
-            font-size: 2.5rem;
-            color: var(--accent);
-            opacity: 0.5;
-            margin-bottom: 10px;
-        }
-        .upload-area h4 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        .upload-area p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin: 4px 0 16px;
-        }
-
-        .file-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-gradient);
-            color: #fff;
-            padding: 10px 28px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .file-label:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px -6px rgba(124, 58, 237, 0.4);
-        }
-        .upload-area input[type="file"] {
-            display: none;
-        }
-
-        #uploadStatus {
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: var(--accent);
         }
 
         /* ============================================================
@@ -600,12 +555,12 @@
             .nav-actions .btn-outline i {
                 margin: 0;
             }
-            .upload-area {
-                padding: 30px 16px;
-            }
             .project-card .project-links {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
+            }
+            .project-card .project-links a {
+                justify-content: center;
             }
         }
 
@@ -627,9 +582,6 @@
                 width: 36px;
                 height: 36px;
                 font-size: 1rem;
-            }
-            .project-card .project-links a {
-                font-size: 0.8rem;
             }
         }
     </style>
@@ -660,42 +612,68 @@
             </nav>
         </div>
     </header>
+
+    <!-- ============================================================
+    PROJECTS SECTION
+    ============================================================ -->
     <section id="projects">
         <div class="container">
             <span class="badge reveal"><i class="fas fa-folder-open"></i> My Work</span>
             <h2 class="section-title reveal">Projects I've <span>Built</span></h2>
             <p class="section-sub reveal">Here are some of the projects I've worked on. More coming soon!</p>
+
+            <!-- Projects Grid -->
             <div class="projects-grid">
+                <!-- Project 1: Coffee Shop -->
                 <div class="project-card reveal reveal-delay-1">
-                    <div class="project-icon"><i class="fas fa-store"></i></div>
-                    <h3>Coffee Shop</h3>
+                    <div class="project-icon"><i class="fas fa-mug-hot"></i></div>
+                    <h3>Coffee Shop Website</h3>
                     <div class="tech-tags">
                         <span>HTML</span>
                         <span>CSS</span>
                         <span>JavaScript</span>
                     </div>
-                    <p>"A beautifully designed coffee shop website with an interactive menu, shopping cart, and order system. Built with HTML, CSS, and vanilla JavaScript."</p>
+                    <p>A beautifully designed coffee shop website with an interactive menu, shopping cart, and order system. Built with HTML, CSS, and vanilla JavaScript.</p>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-                        <a href="#" target="_blank" class="demo-link"><i class="fas fa-play"></i> Live Demo</a>
+                        <a href="#" target="_blank" class="btn-github">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                        <a href="#" target="_blank" class="btn-video">
+                            <i class="fas fa-play"></i> Video Demo
+                        </a>
+                        <a href="#" target="_blank" class="btn-demo">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
                     </div>
                 </div>
+
+                <!-- Project 2: Task Manager -->
                 <div class="project-card reveal reveal-delay-2">
                     <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
                     <h3>Task Manager App</h3>
                     <div class="tech-tags">
                         <span>ASP.NET Core MVC</span>
                         <span>JavaScript</span>
-                        <span>CSS</span>
                         <span>SQL</span>
                     </div>
                     <p>A task management application built with ASP.NET Core MVC. Users can create, edit, and delete tasks with deadlines and priority levels.</p>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-                        <a href="#" target="_blank" class="demo-link"><i class="fas fa-play"></i> Live Demo</a>
+                        <a href="#" target="_blank" class="btn-github">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                        <a href="#" target="_blank" class="btn-video">
+                            <i class="fas fa-play"></i> Video Demo
+                        </a>
+                        <a href="#" target="_blank" class="btn-demo">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- ============================================================
+            MORE PROJECTS (Coming Soon)
+            ============================================================ -->
             <div class="more-projects reveal">
                 <h3>🚀 More Projects Coming Soon</h3>
                 <p>I'm currently working on new projects and will share them here.</p>
@@ -703,18 +681,12 @@
                     <i class="fas fa-envelope"></i> Got a Project Idea?
                 </a>
             </div>
-            <div class="upload-area reveal" id="uploadArea">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <h4>Showcase Your Project</h4>
-                <p>Upload your project files or demo — I'd love to see your work!</p>
-                <input type="file" id="fileInput" accept="image/*,video/*,application/pdf" multiple />
-                <label for="fileInput" class="file-label">
-                    <i class="fas fa-plus-circle"></i> Choose Files
-                </label>
-                <div id="uploadStatus"></div>
-            </div>
         </div>
     </section>
+
+    <!-- ============================================================
+    CTA
+    ============================================================ -->
     <section id="cta">
         <div class="container">
             <h2 class="reveal">Have a project <br /><span>in mind?</span></h2>
@@ -724,6 +696,10 @@
             </a>
         </div>
     </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
     <footer>
         <div class="container">
             <div class="footer-inner">
@@ -737,9 +713,17 @@
             </div>
         </div>
     </footer>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
     <script>
         (function() {
             'use strict';
+
+            // ============================================================
+            // THEME TOGGLE
+            // ============================================================
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
@@ -762,6 +746,10 @@
                 const current = html.getAttribute('data-theme');
                 setTheme(current === 'dark' ? 'light' : 'dark');
             });
+
+            // ============================================================
+            // MOBILE MENU
+            // ============================================================
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
 
@@ -786,6 +774,10 @@
                     menuToggle.querySelector('i').className = 'fas fa-bars';
                 }
             });
+
+            // ============================================================
+            // SCROLL REVEAL
+            // ============================================================
             const revealElements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -798,53 +790,6 @@
                 rootMargin: '0px 0px -30px 0px'
             });
             revealElements.forEach(el => observer.observe(el));
-            const fileInput = document.getElementById('fileInput');
-            const uploadStatus = document.getElementById('uploadStatus');
-
-            fileInput.addEventListener('change', function(e) {
-                const files = e.target.files;
-                if (files.length > 0) {
-                    let fileNames = [];
-                    for (let i = 0; i < files.length; i++) {
-                        fileNames.push(files[i].name);
-                    }
-                    uploadStatus.innerHTML = `
-                        <i class="fas fa-check-circle" style="color:#22c55e;"></i>
-                        ${files.length} file(s) uploaded: ${fileNames.join(', ')}
-                    `;
-                    uploadStatus.style.color = '#22c55e';
-                } else {
-                    uploadStatus.innerHTML = '';
-                }
-            });
-            const uploadArea = document.getElementById('uploadArea');
-            uploadArea.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                uploadArea.style.borderColor = 'var(--accent)';
-                uploadArea.style.background = 'var(--accent-soft)';
-            });
-            uploadArea.addEventListener('dragleave', function(e) {
-                e.preventDefault();
-                uploadArea.style.borderColor = 'var(--border-medium)';
-                uploadArea.style.background = 'var(--bg-surface)';
-            });
-            uploadArea.addEventListener('drop', function(e) {
-                e.preventDefault();
-                uploadArea.style.borderColor = 'var(--border-medium)';
-                uploadArea.style.background = 'var(--bg-surface)';
-                const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    let fileNames = [];
-                    for (let i = 0; i < files.length; i++) {
-                        fileNames.push(files[i].name);
-                    }
-                    uploadStatus.innerHTML = `
-                        <i class="fas fa-check-circle" style="color:#22c55e;"></i>
-                        ${files.length} file(s) uploaded: ${fileNames.join(', ')}
-                    `;
-                    uploadStatus.style.color = '#22c55e';
-                }
-            });
 
         })();
     </script>
