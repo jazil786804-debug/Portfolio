@@ -612,10 +612,6 @@
             </nav>
         </div>
     </header>
-
-    <!-- ============================================================
-    PROJECTS SECTION
-    ============================================================ -->
     <section id="projects">
         <div class="container">
             <span class="badge reveal"><i class="fas fa-folder-open"></i> My Work</span>
@@ -670,10 +666,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ============================================================
-            MORE PROJECTS (Coming Soon)
-            ============================================================ -->
             <div class="more-projects reveal">
                 <h3>🚀 More Projects Coming Soon</h3>
                 <p>I'm currently working on new projects and will share them here.</p>
@@ -683,10 +675,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ============================================================
-    CTA
-    ============================================================ -->
     <section id="cta">
         <div class="container">
             <h2 class="reveal">Have a project <br /><span>in mind?</span></h2>
@@ -696,10 +684,6 @@
             </a>
         </div>
     </section>
-
-    <!-- ============================================================
-    FOOTER
-    ============================================================ -->
     <footer>
         <div class="container">
             <div class="footer-inner">
@@ -713,17 +697,9 @@
             </div>
         </div>
     </footer>
-
-    <!-- ============================================================
-    JAVASCRIPT
-    ============================================================ -->
     <script>
         (function() {
             'use strict';
-
-            // ============================================================
-            // THEME TOGGLE
-            // ============================================================
             const themeToggle = document.getElementById('themeToggle');
             const html = document.documentElement;
 
@@ -746,10 +722,6 @@
                 const current = html.getAttribute('data-theme');
                 setTheme(current === 'dark' ? 'light' : 'dark');
             });
-
-            // ============================================================
-            // MOBILE MENU
-            // ============================================================
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
 
@@ -774,10 +746,6 @@
                     menuToggle.querySelector('i').className = 'fas fa-bars';
                 }
             });
-
-            // ============================================================
-            // SCROLL REVEAL
-            // ============================================================
             const revealElements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
