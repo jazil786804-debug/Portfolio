@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Jazil Awan — Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.8);
+            --border-subtle: #eef2f6;
+            --border-medium: #dce2ea;
+            --text-primary: #0a0f1e;
+            --text-secondary: #334155;
+            --text-muted: #94a3b8;
+            --accent: #7c3aed;
+            --accent-light: #a78bfa;
+            --accent-soft: #f5f0ff;
+            --accent-gradient: linear-gradient(135deg, #7c3aed, #6d28d9);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.08);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0a0f1e;
+            --bg-surface: #141b2b;
+            --bg-card: #1a2332;
+            --bg-nav: rgba(20, 27, 43, 0.9);
+            --border-subtle: #2a3348;
+            --border-medium: #3a455a;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-soft: #2d2a4a;
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-body);
+            color: var(--text-primary);
+            transition: background 0.3s, color 0.3s;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: var(--bg-nav);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.3s, border-color 0.3s;
+            padding: 6px 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+        }
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle,
+        .menu-toggle {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 60px;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .theme-toggle:hover,
+        .menu-toggle:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1.5px solid var(--border-medium);
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .btn-outline i {
+            color: var(--accent);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 8px 24px -6px rgba(124, 58, 237, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px -8px rgba(124, 58, 237, 0.4);
+        }
+        .btn-primary i {
+            transition: transform 0.2s;
+        }
+        .btn-primary:hover i {
+            transform: translateX(4px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-surface);
+            color: var(--accent);
+            border: 1.5px solid var(--accent);
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .btn-secondary:hover {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           PROJECTS SECTION
+           ============================================================ */
+        #projects {
+            padding: 50px 0 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 4px 16px 4px 12px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+            margin-bottom: 10px;
+        }
+        .section-title span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        /* ----- Projects Grid (2 Projects Only) ----- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 30px 28px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .project-card .project-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 14px;
+            display: inline-block;
+            background: var(--accent-soft);
+            padding: 12px;
+            border-radius: 14px;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .project-card .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0 12px;
+        }
+        .project-card .tech-tags span {
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 2px 12px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .project-card .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .project-card .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .project-card .project-links a:hover {
+            color: var(--accent-dark);
+            transform: translateX(3px);
+        }
+        .project-card .project-links a i {
+            font-size: 0.9rem;
+        }
+
+        .project-card .project-links .demo-link {
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 60px;
+        }
+        .project-card .project-links .demo-link:hover {
+            background: var(--accent-dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ----- Coming Soon / More Projects ----- */
+        .more-projects {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+        }
+        .more-projects h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .more-projects p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 4px 0 14px;
+        }
+
+        /* ============================================================
+           UPLOAD AREA (Simple)
+           ============================================================ */
+        .upload-area {
+            margin-top: 40px;
+            padding: 40px 20px;
+            border: 2px dashed var(--border-medium);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            background: var(--bg-surface);
+        }
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+        .upload-area i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+        .upload-area h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .upload-area p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 4px 0 16px;
+        }
+
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .file-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px -6px rgba(124, 58, 237, 0.4);
+        }
+        .upload-area input[type="file"] {
+            display: none;
+        }
+
+        #uploadStatus {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        /* ============================================================
+           CTA
+           ============================================================ */
+        #cta {
+            padding: 50px 0 40px;
+            text-align: center;
+        }
+        #cta h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        #cta h2 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #cta p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 8px 0 24px;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 28px 0 24px;
+            background: var(--bg-surface);
+            transition: background 0.3s;
+        }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .socials {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .socials a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-body);
+            border: 1px solid var(--border-subtle);
+        }
+        .socials a:hover {
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-color: var(--accent);
+        }
+        footer p {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ============================================================
+           REVEAL ANIMATIONS
+           ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin: 0 auto 40px;
+            }
+            .project-card {
+                padding: 24px 20px;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--bg-surface);
+                padding: 14px 0;
+                border-radius: var(--radius-md);
+                border: 1px solid var(--border-subtle);
+                margin-top: 6px;
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: 8px 0;
+                border-radius: 0;
+            }
+            .menu-toggle {
+                display: inline-flex;
+            }
+            .nav-actions .btn-outline span {
+                display: none;
+            }
+            .nav-actions .btn-outline i {
+                margin: 0;
+            }
+            .upload-area {
+                padding: 30px 16px;
+            }
+            .project-card .project-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
+            .socials {
+                gap: 14px;
+            }
+            .socials a {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            .project-card .project-links a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><span>.</span>Jazil<span>.</span></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="contact.html" class="btn-outline">
+                        <i class="fas fa-rocket"></i> <span>Let's Talk</span>
+                    </a>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section id="projects">
+        <div class="container">
+            <span class="badge reveal"><i class="fas fa-folder-open"></i> My Work</span>
+            <h2 class="section-title reveal">Projects I've <span>Built</span></h2>
+            <p class="section-sub reveal">Here are some of the projects I've worked on. More coming soon!</p>
+            <div class="projects-grid">
+                <div class="project-card reveal reveal-delay-1">
+                    <div class="project-icon"><i class="fas fa-store"></i></div>
+                    <h3>Coffee Shop</h3>
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <p>"A beautifully designed coffee shop website with an interactive menu, shopping cart, and order system. Built with HTML, CSS, and vanilla JavaScript."</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                        <a href="#" target="_blank" class="demo-link"><i class="fas fa-play"></i> Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-card reveal reveal-delay-2">
+                    <div class="project-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h3>Task Manager App</h3>
+                    <div class="tech-tags">
+                        <span>ASP.NET Core MVC</span>
+                        <span>JavaScript</span>
+                        <span>CSS</span>
+                        <span>SQL</span>
+                    </div>
+                    <p>A task management application built with ASP.NET Core MVC. Users can create, edit, and delete tasks with deadlines and priority levels.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                        <a href="#" target="_blank" class="demo-link"><i class="fas fa-play"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="more-projects reveal">
+                <h3>🚀 More Projects Coming Soon</h3>
+                <p>I'm currently working on new projects and will share them here.</p>
+                <a href="contact.html" class="btn-secondary">
+                    <i class="fas fa-envelope"></i> Got a Project Idea?
+                </a>
+            </div>
+            <div class="upload-area reveal" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h4>Showcase Your Project</h4>
+                <p>Upload your project files or demo — I'd love to see your work!</p>
+                <input type="file" id="fileInput" accept="image/*,video/*,application/pdf" multiple />
+                <label for="fileInput" class="file-label">
+                    <i class="fas fa-plus-circle"></i> Choose Files
+                </label>
+                <div id="uploadStatus"></div>
+            </div>
+        </div>
+    </section>
+    <section id="cta">
+        <div class="container">
+            <h2 class="reveal">Have a project <br /><span>in mind?</span></h2>
+            <p class="reveal reveal-delay-1">Let's build something great together.</p>
+            <a href="contact.html" class="btn-primary reveal reveal-delay-2">
+                <i class="fas fa-paper-plane"></i> Get in Touch
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="socials">
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                </div>
+                <p>&copy; 2026 Jazil Awan. Built with <i class="fas fa-heart" style="color:#a855f7;"></i></p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            'use strict';
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+
+            function setTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                const icon = themeToggle.querySelector('i');
+                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                localStorage.setItem('theme', theme);
+            }
+
+            const saved = localStorage.getItem('theme');
+            if (saved) {
+                setTheme(saved);
+            } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setTheme(prefersDark ? 'dark' : 'light');
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme');
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('open');
+                const icon = menuToggle.querySelector('i');
+                icon.className = navLinks.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                const nav = document.querySelector('nav');
+                if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+            });
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            revealElements.forEach(el => observer.observe(el));
+            const fileInput = document.getElementById('fileInput');
+            const uploadStatus = document.getElementById('uploadStatus');
+
+            fileInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                if (files.length > 0) {
+                    let fileNames = [];
+                    for (let i = 0; i < files.length; i++) {
+                        fileNames.push(files[i].name);
+                    }
+                    uploadStatus.innerHTML = `
+                        <i class="fas fa-check-circle" style="color:#22c55e;"></i>
+                        ${files.length} file(s) uploaded: ${fileNames.join(', ')}
+                    `;
+                    uploadStatus.style.color = '#22c55e';
+                } else {
+                    uploadStatus.innerHTML = '';
+                }
+            });
+            const uploadArea = document.getElementById('uploadArea');
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--accent)';
+                uploadArea.style.background = 'var(--accent-soft)';
+            });
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--border-medium)';
+                uploadArea.style.background = 'var(--bg-surface)';
+            });
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--border-medium)';
+                uploadArea.style.background = 'var(--bg-surface)';
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    let fileNames = [];
+                    for (let i = 0; i < files.length; i++) {
+                        fileNames.push(files[i].name);
+                    }
+                    uploadStatus.innerHTML = `
+                        <i class="fas fa-check-circle" style="color:#22c55e;"></i>
+                        ${files.length} file(s) uploaded: ${fileNames.join(', ')}
+                    `;
+                    uploadStatus.style.color = '#22c55e';
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
